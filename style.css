@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+	margin: 0;
+}
+nav{
+	background: #21610B;
+	width: 100%;
+	margin: 0;
+	height: 90px;
+	padding: 5px;
+}
+nav ul{
+	width: 70%;
+	margin: 1% 5% 5% 10%;
+	font-size: 20px;
+}
+nav a{
+	text-decoration: none;
+	color: #fff;
+}
+nav ul li{
+	list-style: none;
+	display: inline-block;
+	float: right;
+	text-align: right;
+	color: #fff;
+	padding: 15px;
+}
+nav img{
+	border-radius: 100%;
+	max-height: 60px;
+	height: auto;
+	width: 60px;
+	float: left;
+	
+}
+* {
+	font-family: Montserrat, sans-serif;
+	box-sizing: border-box;
+}
+.input {
+	-webkit-appearance: none;
+}
+#chkbx{
+	display: block;
+}
+.form {
+	width: 370px;
+	margin: 0 auto;
+	padding: 10px;
+	/*border: 1px solid black;*/
+}
+.form .header {
+	color: black;
+	font-size: 40px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	margin: 50px 0;
+}
+.form form label.input {
+	display: block;
+	margin-bottom: 8px;
+	width: 100%;
+	height: 50px;
+	border: 2px solid #E2E2E2;
+	border-radius: 3px;
+	position: relative;
+	transition: border 0.3s;
+	-webkit-transition: border 0.3s;
+	-o-transition: border 0.3s;
+	-moz-transition: border 0.3s;
+}
+.form form label.input:hover {
+	border: 2px solid DarkGray;
+}
+.form form label.input label.placeholder {
+	position: absolute;
+	line-height: 46px;
+	left: 15px;
+	cursor: text;
+	top: 0px;
+	color: #828282;
+	transition: font-size 0.3s, line-height 0.3s, left 0.3s;
+	-webkit-transition: font-size 0.3s, line-height 0.3s, left 0.3s;
+	-o-transition: font-size 0.3s, line-height 0.3s, left 0.3s;
+	-moz-transition: font-size 0.3s, line-height 0.3s, left 0.3s;
+}
+.form form label.input.focus label.placeholder {
+	font-size: 9px;
+	line-height: 18px;
+	left: 5px;
+}
+.form form label.input input {
+	width: 100%;
+	height: 100%;
+	padding: 0 15px;
+	border: none;
+	outline: none;
+}
+.form form > input[type=submit] {
+	display: block;
+	width: 100%;
+	border: none;
+	border-radius: 3px;
+	background-color: #21610B;
+	color: white;
+	padding: 25px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	-webkit-transition: background-color 0.3s;
+	-o-transition: background-color 0.3s;
+	-moz-transition: background-color 0.3s;
+}
+.form form > input[type=submit]:hover {
+	background-color: #01DF01;
+}
+.form .footer {
+	display: block;
+	padding-top: 10px;
+}
+.form .footer {
+	font-size: 12px;
+}
+.form .footer a {
+	font-size: 12px;
+	text-decoration: none;
+	padding-left: 3px;
+}
+.form .footer a:hover {
+	text-decoration: underline;
+}
+.error {
+	padding: 7px;
+	font-size: 13px;
+}
+#logged{
+	text-align: center;
+}
+
+
+#content{
+	width: 55%;
+	min-height: 100vh; 
+	margin: 2% auto;
+}
+
+#content  table{
+	margin: 2% auto;
+	width: 90%;
+}
+
+
+#checklist{
+	float: left;
+	width: 45%;
+	min-height: 70vh; 
+	margin: 2% auto;
+	
+}
+#checklist  fieldset{
+	max-width: 80%;
+	min-height: 15vh;
+	display: flex;
+	margin: 1% auto;
+	padding: 5px 10px;
+}
+#checklist table{
+	margin: 2% auto;
+	width: 90%;
+}
+#checklist td:nth-child(1), #checklist td:nth-child(3), #checklist td:nth-child(4){
+	width: 2%;
+	text-align: center;
+}
+
+
+
+#nota{
+	width: 55%;
+	min-height: 100vh; 
+	margin: 2% auto;
+	float: right;
+	border-left: 1px solid;
+}
+
+#nota header{
+	min-height: 20vh;
+}
+
+#nota fieldset{
+	max-width: 80%;
+	min-height: 15vh;
+	display: flex;
+	margin: 1% auto;
+	padding: 5px 10px;
+}
+#nota fieldset legend{
+	padding: 2px 5px;
+}
+#filtro{
+	float: left;
+}
+
+#nota article{
+	min-height: 50px;
+	width: 90%;
+	border: 1px solid;
+	margin: 15px auto;
+}
+#nota article legend{
+	background-color: #21610B;
+	width: auto;
+	padding: 5px;
+	color:#fff;
+}
+#nota article p{
+	margin: 2px 10px;
+	padding: 5px 2px;
+	text-align: justify-all;
+}
+#notas article p{
+	font-family: all;
+
+}
+#nota .action{
+	float: right;
+	color: #fff;
+
+}
+
+#nota .analista{
+	font-size: 8pt;
+	padding-left: 5px;
+}
+
+
+
+table,tr,td,th{
+	border-collapse: collapse;
+	border: 1px solid;
+	padding: 5px 10px;
+}
+@media  screen and (max-width: 768px) {
+	nav ul{
+		width: 90%;
+		margin:0;
+		font-size: 13px;
+	}
+
+	nav ul li{
+		display: block;
+	}
+	.form {
+		width: 100%;
+	}
+	#checklist, #nota{
+	float: none;
+	width: 100%;
+
+	}
+	#checklist table{
+		width: 100%;
+	}
+
+}
