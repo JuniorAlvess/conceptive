@@ -42,22 +42,71 @@ if (isset($_SESSION['user'])){
 	</nav>
 	<main>
 		<section id="content">
-			<fieldset>
-				<legend>Atualizar nivel de usuário</legend>
-				<form>
-					<select>
+				<fieldset>
+					<legend>
+						Atualizar usuário
+					</legend>
+					<form>
+						
+					<input type="" name="" placeholder="Nova senha">
+					<input type="" name="" placeholder="Confirme a senha">
+					<input type="submit" name="" value="Atualizar senha">
+					</form> 
+					<form>
+						<label>Atualizar foto</label><br>
+						<input type="file" name=""><br>
+						<input type="submit" name="" value="Atualizar">
+					</form>
+				</fieldset>
+				<fieldset>
+					<legend>
+						Gerenciamento
+					</legend>
+
+					<h3>Atualizar nivel de usuário</h3>
+				<form action="user.php" method="post">
+					<select name='usuario'>
 						<option>user1</option>
 						<option>user1</option>
 						<option>user1</option>
 					</select>
-					<select>
+					<select name="lvl">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 					</select>
 					<input type="submit" name="atualizar_lvl" value="Atualizar">
 				</form>
-			</fieldset>			
+			<hr>
+			<h3>Liberar acessos</h3>
+				<form action="user.php" method="post">
+					<select name='usuario'>
+						<option>user1</option>
+						<option>user1</option>
+						<option>user1</option>
+					</select>
+					<select name="projeto">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+					</select>
+					<input type="submit" name="libproj" value="Atualizar">
+				</form>
+			<hr>
+			<h3>Gerenciar projetos</h3>
+			<form>
+				<input type="text" name="" placeholder="Novo do projeto">
+				<input type="submit" name="" value="Criar">
+			</form>
+			<form>
+				<select>
+					<option>Projeto1</option>
+					<option>Projeto1</option>
+					<option>Projeto1</option>
+				</select>
+				<input type="submit" name="" value="Encerrar">
+			</form>
+				</fieldset>
 		</section>
 	</main>
 
