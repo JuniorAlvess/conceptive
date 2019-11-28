@@ -42,11 +42,22 @@ if (isset($_SESSION['user'])){
 	</nav>
 	<main>
 		<section id="content">
-			
-	<?php echo $_SESSION['user']; ?><br>
-	<?php echo $_SESSION['nome']; ?><br>
-	<?php echo $_SESSION['email']; ?><br>
-	<?php echo $_SESSION['usrlvl']; ?><br>
+			<fieldset>
+				<legend>Atualizar nivel de usuário</legend>
+				<form>
+					<select>
+						<option>user1</option>
+						<option>user1</option>
+						<option>user1</option>
+					</select>
+					<select>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+					</select>
+					<input type="submit" name="atualizar_lvl" value="Atualizar">
+				</form>
+			</fieldset>			
 		</section>
 	</main>
 

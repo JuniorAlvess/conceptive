@@ -41,7 +41,7 @@ if (isset($_SESSION['user'])){
 			</ul>
 		</nav>
 		<main>
-			<div class="content">
+			<div id="content">
 				<?php foreach ($_SESSION['acessos'] as $key => $value) {
 					echo "<a href='projetos/$value/'>$value</a><br>";
 				}
