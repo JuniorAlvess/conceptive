@@ -28,7 +28,11 @@
 	<body>
 		<nav>
 			<ul>
-				<img src="https://rodcordeiro.github.io/shares/img/logo_branco.png">
+				<?php if (isset($_SESSION['user'])) { ?>
+					<img src="img/<?php echo $_SESSION['user']; ?>"/>
+				<?php } else { ?>
+					<img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
+				<?php } ?>
 				<?php if (isset($_SESSION['user'])): ?>
 					<a href="home.php"><li>Home</li></a>
 				<?php endif ?>

@@ -31,6 +31,7 @@ create table cptv_task(
 	prioridade int(1) not null,
 	status varchar(10)
 );
+
 --release 1.3
 alter table cptv_task add projeto varchar(20) not null;
 alter table cptv_anotacoes add projeto varchar(20) not null;
@@ -52,3 +53,18 @@ insert into cptv_acessos(user,acessos) values('Junior','devblog');
 insert into cptv_acessos(user,acessos) values('Junior','conceptive');
 insert into cptv_acessos(user,acessos) values('ChapaaQuente','FanaticSports');
 insert into cptv_acessos(user,acessos) values('ChapaaQuente','conceptive');	
+drop table if exists cptv_acessos;
+
+--release 1.4
+drop table if exists cptv_projetos;
+create table cptv_projetos(
+id int(3) not null primary key auto_increment,
+projeto varchar(20),
+status varchar(10),
+data_criacao date not null,
+data_encerramento date
+);
+insert into cptv_projetos(projeto, status,data_criacao) values
+	('conceptive','aberto', current_date()),
+	('FanaticSports','aberto', current_date()),
+	('DevBlog','aberto', current_date());

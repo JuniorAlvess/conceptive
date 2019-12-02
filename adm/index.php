@@ -1,6 +1,58 @@
 <?php
  include('../server.php');
 if (isset($_SESSION['user'])){
+
+/* PARA CRIAR PASTA
+$pasta = "nova";
+mkdir('./'.$pasta.'/', 0777, true);
+$new_file = @fopen('./'.$pasta.'/font.css', "a+");
+$msg = "working";
+fwrite($new_file, $msg);
+fclose($new_file);
+
+include('../../server.php');
+
+$notas_conceptive = mysqli_query($db, "SELECT * FROM cptv_anotacoes where data_finalizacao IS NULL and projeto like 'conceptive'");
+if(isset($_POST['adicionar_conceptive'])){
+	$user = $_SESSION['nome'];
+	$titulo = $_POST['titulo'];
+	$nota = $_POST['nota'];
+	$sql = "insert into cptv_anotacoes (data_criacao,user,titulo,anotacao,data_finalizacao,projeto) values 
+	(curdate(),'$user','$titulo','$nota',NULL,'conceptive');";
+	mysqli_query($db, $sql);
+	$notify =mysqli_query($db,"select email from cptv_users;");
+	while ($row = mysqli_fetch_array($notify)) {
+		$email_servidor = "rodrigomendoncca@gmail.com";
+		$para = $row['email'];
+		$de = $_SESSION['email'];
+		$mensagem = "<h3>Nova nota adicionada!!</h3>
+		<p> O ".$_SESSION['nome']." acabou de inserir uma nova nota:<br> <a target='_blank' href='rodrigocordeiro.com.br".$_SERVER['PHP_SELF']."'>$titulo</a></p>
+		";
+		$assunto = "Nova nota adicionada";
+		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
+	}
+	header('location: index.php');
+}
+$tasks_conceptive = mysqli_query($db,"select * from cptv_task where status is null and projeto like 'conceptive' order by prioridade desc");
+if (isset($_POST['task_conceptive'])) {
+	$titulo = $_POST['titulo'];
+	$lvl = $_POST['prioridade'];
+	$sql = "insert into cptv_task(titulo,prioridade,projeto) values ('$titulo','$lvl','conceptive');";
+	mysqli_query($db,$sql);
+	$notify =mysqli_query($db,"select email from cptv_users;");
+	while ($row = mysqli_fetch_array($notify)) {
+		$email_servidor = "rodrigomendoncca@gmail.com";
+		$para = $row['email'];
+		$de = $_SESSION['email'];
+		$mensagem = "<h3>Nova tarefa adicionada!!</h3>
+		<p> O ".$_SESSION['nome']." acabou de inserir uma nova tarefa:<br> <a target='_blank' href='rodrigocordeiro.com.br".$_SERVER['PHP_SELF']."'>$titulo</a></p>
+		";
+		$assunto = "Nova tarefa adicionada";
+		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
+	}
+	header("location: index.php");
+}
+*/
 ?>
 <html>
 <head>
@@ -31,7 +83,11 @@ if (isset($_SESSION['user'])){
 <body>
 	<nav>
 		<ul>
-	        <img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
+	        <?php if (isset($_SESSION['user'])) { ?>
+					<img src="../img/<?php echo $_SESSION['user']; ?>"/>
+				<?php } else { ?>
+					<img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
+				<?php } ?>
 	        <a href="?logoff"><li>logoff</li></a>
 	        <a href="../user.php"><li><?php echo $_SESSION['user']; ?></li></a>
 	        <a href="../home.php"><li>Home</li></a>
@@ -48,7 +104,7 @@ if (isset($_SESSION['user'])){
 					</legend>
 
 					<h3>Atualizar nivel de usuário</h3>
-				<form action="user.php" method="post">
+				<form action="index.php" method="post">
 					<select name='usuario'>
 						<option>user1</option>
 						<option>user1</option>
@@ -63,7 +119,7 @@ if (isset($_SESSION['user'])){
 				</form>
 			<hr>
 			<h3>Liberar acessos</h3>
-				<form action="user.php" method="post">
+				<form action="index.php" method="post">
 					<select name='usuario'>
 						<option>user1</option>
 						<option>user1</option>
