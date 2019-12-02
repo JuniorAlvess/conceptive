@@ -46,9 +46,9 @@ if (isset($_SESSION['user'])){
 						Atualizar usuário
 					</legend>
 					<form method="post" action="user.php">
-					<input id="pwd1" type="text" name="pwd1" placeholder="Nova senha">
-					<input id="pwd2" type="text" name="pwd2" placeholder="Confirme a senha">
-					<input type="submit" name="att_pwd" value="Atualizar senha">
+					<input id="pwd1" type="password" name="pwd1" placeholder="Nova senha">
+					<input id="pwd2" type="password" name="pwd2" placeholder="Confirme a senha">
+					<input type="submit" name="att_pwd" id="att_pwd" value="Atualizar senha" style="display: none;">
 					</form> 
 					<form enctype="multipart/form-data" method="post" action="user.php">
 						<label>Atualizar foto</label><br><br>
@@ -61,11 +61,19 @@ if (isset($_SESSION['user'])){
 	</main>
 
 	<script type="text/javascript">
-		pwd2.addEventListener("keypress", function(){
+		setInterval(function(){
 			var pwd1 = document.getElementById("pwd1").value;
-			var pawd2 = document.getElementById("pwd2").value;
-			console.log(pwd1 + '\n' + pawd2);
-		})
+			var pwd2 = document.getElementById("pwd2").value;
+			if (pwd1 != "") {
+				if (pwd1 == pwd2) {
+				console.log("Iguais");
+				document.getElementById("att_pwd").style.display = "block";
+			} else{
+				console.clear();
+				document.getElementById("att_pwd").style.display = "none";
+			}
+			}
+		}, 100)
 	</script>
 
 
