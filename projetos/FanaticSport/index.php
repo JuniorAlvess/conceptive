@@ -34,6 +34,7 @@ if (isset($_SESSION['user'])){
 				<img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
 				<a href="?logoff"><li>logoff</li></a>
 				<a href="../../user.php"><li><?php echo $_SESSION['user']; ?></li></a>
+				<?php if ($_SESSION['usrlvl'] >=2) { echo "<a href='../../adm/'><li>Admin</li></a>"; } ?>
 				<a href="../../equipe.php"><li>Time</li></a>
 				<a href="../../home.php"><li>Home</li></a>
 

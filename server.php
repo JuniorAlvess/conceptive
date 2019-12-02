@@ -28,6 +28,16 @@ if (isset($_GET['logoff'])) {
 	header('location:http://www.rodrigocordeiro.com.br/conceptive/login.php');
 }
 
+function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
+			$headers = "From: $email_servidor\r\n" .
+			"Reply-To: $de\r\n" .
+			"X-Mailer: PHP/" . phpversion() . "\r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+			mail($para, $assunto, nl2br($mensagem), $headers);
+		}
+
 //If Login is clicked:
 if (isset($_POST['login'])) {
 	$uid= preg_replace('/[^[:alnum:]_]/', '',$_POST['user']);
@@ -54,7 +64,6 @@ if (isset($_POST['login'])) {
 			array_push($_SESSION['acessos'], $row['acessos']);
 		}
 		ksort($_SESSION['acessos']);
-		
 		header('location: home.php');
 	} else {
 		array_push($errors, "Erooou!! Veja se o usuário ou senha estão corretos.");
@@ -93,16 +102,6 @@ if(isset($_POST['register'])){
 		$passwd = md5($passwd_1);
 		$sql = "INSERT INTO cptv_users (user, nome, email, senha, lvl) VALUES ('$uid', '$nome', '$email', '$passwd', 1)";
 		if(mysqli_query($db,$sql)){
-			function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-				$headers = "From: $email_servidor\r\n" .
-				"Reply-To: $de\r\n" .
-				"X-Mailer: PHP/" . phpversion() . "\r\n";
-				$headers .= "MIME-Version: 1.0\r\n";
-				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-				mail($para, $assunto, nl2br($mensagem), $headers);
-			}
-
 			$email_servidor = "rodrigomendoncca@gmail.com";
 			$para = $email;
 			$de = "rodrigomendoncca@gmail.com";
@@ -148,16 +147,6 @@ if(isset($_POST['adicionar_conceptive'])){
 	mysqli_query($db, $sql);
 	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
-		function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-			$headers = "From: $email_servidor\r\n" .
-			"Reply-To: $de\r\n" .
-			"X-Mailer: PHP/" . phpversion() . "\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-			mail($para, $assunto, nl2br($mensagem), $headers);
-		}
-
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
 		$de = $_SESSION['email'];
@@ -166,8 +155,8 @@ if(isset($_POST['adicionar_conceptive'])){
 		";
 		$assunto = "Nova nota adicionada";
 		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-		header('location: index.php');
 	}
+	header('location: index.php');
 }
 if(isset($_POST['adicionar_devblog'])){
 	$user = $_SESSION['nome'];
@@ -178,15 +167,7 @@ if(isset($_POST['adicionar_devblog'])){
 	mysqli_query($db, $sql);
 	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
-		function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-			$headers = "From: $email_servidor\r\n" .
-			"Reply-To: $de\r\n" .
-			"X-Mailer: PHP/" . phpversion() . "\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-			mail($para, $assunto, nl2br($mensagem), $headers);
-		}
+		
 
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
@@ -196,8 +177,9 @@ if(isset($_POST['adicionar_devblog'])){
 		";
 		$assunto = "Nova nota adicionada";
 		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-		header('location: index.php');
+		
 	}
+	header('location: index.php');
 }
 if(isset($_POST['adicionar_fanatic'])){
 	$user = $_SESSION['nome'];
@@ -208,16 +190,6 @@ if(isset($_POST['adicionar_fanatic'])){
 	mysqli_query($db, $sql);
 	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
-		function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-			$headers = "From: $email_servidor\r\n" .
-			"Reply-To: $de\r\n" .
-			"X-Mailer: PHP/" . phpversion() . "\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-			mail($para, $assunto, nl2br($mensagem), $headers);
-		}
-
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
 		$de = $_SESSION['email'];
@@ -226,8 +198,8 @@ if(isset($_POST['adicionar_fanatic'])){
 		";
 		$assunto = "Nova nota adicionada";
 		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-		header('location: index.php');
 	}
+	header('location: index.php');
 }
 if (isset($_GET['delete'])) {
 	$id = $_GET['delete'];
@@ -246,15 +218,6 @@ if (isset($_POST['task_conceptive'])) {
 	mysqli_query($db,$sql);
 	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
-		function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-			$headers = "From: $email_servidor\r\n" .
-			"Reply-To: $de\r\n" .
-			"X-Mailer: PHP/" . phpversion() . "\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-			mail($para, $assunto, nl2br($mensagem), $headers);
-		}
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
 		$de = $_SESSION['email'];
@@ -263,9 +226,8 @@ if (isset($_POST['task_conceptive'])) {
 		";
 		$assunto = "Nova tarefa adicionada";
 		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-
-		header("location: index.php");
 	}
+	header("location: index.php");
 }
 
 $tasks_devblog = mysqli_query($db,"select * from cptv_task where status is null and projeto like 'devblog' order by prioridade desc");
@@ -276,16 +238,6 @@ if (isset($_POST['task_devblog'])) {
 	if(mysqli_query($db,$sql)){
 		$notify =mysqli_query($db,"select email from cptv_users;");
 		while ($row = mysqli_fetch_array($notify)) {
-			function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-				$headers = "From: $email_servidor\r\n" .
-				"Reply-To: $de\r\n" .
-				"X-Mailer: PHP/" . phpversion() . "\r\n";
-				$headers .= "MIME-Version: 1.0\r\n";
-				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-				mail($para, $assunto, nl2br($mensagem), $headers);
-			}
-
 			$email_servidor = "rodrigomendoncca@gmail.com";
 			$para = $row['email'];
 			$de = $_SESSION['email'];
@@ -294,10 +246,11 @@ if (isset($_POST['task_devblog'])) {
 			";
 			$assunto = "Nova tarefa adicionada";
 			enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-			header("location: index.php");
 		}
 	}
+	header("location: index.php");
 }
+
 $tasks_fanatic = mysqli_query($db,"select * from cptv_task where status is null and projeto like 'fanaticsports' order by prioridade desc");
 if (isset($_POST['task_devblog'])) {
 	$titulo = $_POST['titulo'];
@@ -306,16 +259,6 @@ if (isset($_POST['task_devblog'])) {
 	if(mysqli_query($db,$sql)){
 		$notify =mysqli_query($db,"select email from cptv_users;");
 		while ($row = mysqli_fetch_array($notify)) {
-			function enviaEmail($de, $assunto, $mensagem, $para, $email_servidor) {
-				$headers = "From: $email_servidor\r\n" .
-				"Reply-To: $de\r\n" .
-				"X-Mailer: PHP/" . phpversion() . "\r\n";
-				$headers .= "MIME-Version: 1.0\r\n";
-				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-				mail($para, $assunto, nl2br($mensagem), $headers);
-			}
-
 			$email_servidor = "rodrigomendoncca@gmail.com";
 			$para = $row['email'];
 			$de = $_SESSION['email'];
@@ -324,8 +267,9 @@ if (isset($_POST['task_devblog'])) {
 			";
 			$assunto = "Nova tarefa adicionada";
 			enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
-			header("location: index.php");
+			
 		}
+		header("location: index.php");
 	}
 }
 if (isset($_GET['task'])) {
@@ -336,13 +280,14 @@ if (isset($_GET['task'])) {
 }
 
 // OUTRAS INFORMAÇÕES
-$membros = array("Alex Lin" => "419106053",
+$membros = array(
+	"Alex Yio Long Lin" => "419106053",
 	"Ednaldo Junior" => "419103769",
-	"Fábio Araújo" => "419119927",
-	"Guilherme N. Pedroso" => "419118123",
-	"Guilherme Godoy" => "419119150",
+	"Fábio Damião Araújo" => "419119927",
+	"Guilherme Nunes Pedroso" => "419118123",
+	"Guilherme William de Godoy" => "419119150",
 	"João Moreira" => "419106506",
-	"Rodrigo Mendonça" => "419108124",
+	"Rodrigo de Mendonça Cordeiro" => "419108124",
 	"Marcos Gabriel Ribeiro Silva" => "419112367");
 ksort($membros);
 

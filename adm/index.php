@@ -1,11 +1,11 @@
 <?php
- include('server.php');
+ include('../server.php');
 if (isset($_SESSION['user'])){
 ?>
 <html>
 <head>
 	<title>HOME | Cordeiros DEV</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<!-- FAVICON -->
 	<link rel="apple-touch-icon" sizes="57x57" href="https://rodcordeiro.github.io/shares/favicons/favicon-rc/apple-icon-57x57.png">
@@ -33,40 +33,69 @@ if (isset($_SESSION['user'])){
 		<ul>
 	        <img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
 	        <a href="?logoff"><li>logoff</li></a>
-	        <a href="#"><li><?php echo $_SESSION['user']; ?></li></a>
-	        <?php if ($_SESSION['usrlvl'] >=2) { echo "<a href='adm/'><li>Admin</li></a>"; } ?>
-	        <a href="equipe.php"><li>Time</li></a>
-			<a href="home.php"><li>Home</li></a>
+	        <a href="../user.php"><li><?php echo $_SESSION['user']; ?></li></a>
+	        <a href="../home.php"><li>Home</li></a>
+			
+
 		</ul>
 	</nav>
 	<main>
 		<section id="content">
+				
 				<fieldset>
 					<legend>
-						Atualizar usuário
+						Gerenciamento
 					</legend>
-					<form method="post" action="user.php">
-					<input id="pwd1" type="text" name="pwd1" placeholder="Nova senha">
-					<input id="pwd2" type="text" name="pwd2" placeholder="Confirme a senha">
-					<input type="submit" name="att_pwd" value="Atualizar senha">
-					</form> 
-					<form enctype="multipart/form-data" method="post" action="user.php">
-						<label>Atualizar foto</label><br><br>
-						<input type="file" name="foto"><br><br>
-						<input type="submit" name="att_foto" value="Atualizar">
-					</form>
+
+					<h3>Atualizar nivel de usuário</h3>
+				<form action="user.php" method="post">
+					<select name='usuario'>
+						<option>user1</option>
+						<option>user1</option>
+						<option>user1</option>
+					</select>
+					<select name="lvl">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+					</select>
+					<input type="submit" name="atualizar_lvl" value="Atualizar">
+				</form>
+			<hr>
+			<h3>Liberar acessos</h3>
+				<form action="user.php" method="post">
+					<select name='usuario'>
+						<option>user1</option>
+						<option>user1</option>
+						<option>user1</option>
+					</select>
+					<select name="projeto">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+					</select>
+					<input type="submit" name="libproj" value="Atualizar">
+				</form>
+			<hr>
+			<h3>Gerenciar projetos</h3>
+			<form>
+				<input type="text" name="" placeholder="Novo do projeto">
+				<input type="submit" name="" value="Criar">
+			</form>
+
+			<form>
+				<select>
+					<option>Projeto1</option>
+					<option>Projeto1</option>
+					<option>Projeto1</option>
+				</select>
+				<input type="submit" name="" value="Encerrar">
+			</form>
 				</fieldset>
-				
 		</section>
 	</main>
 
-	<script type="text/javascript">
-		pwd2.addEventListener("keypress", function(){
-			var pwd1 = document.getElementById("pwd1").value;
-			var pawd2 = document.getElementById("pwd2").value;
-			console.log(pwd1 + '\n' + pawd2);
-		})
-	</script>
+	
 
 
 </body>
