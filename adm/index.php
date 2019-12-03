@@ -84,7 +84,7 @@ if (isset($_POST['task_conceptive'])) {
 	<nav>
 		<ul>
 	        <?php if (isset($_SESSION['user'])) { ?>
-					<img src="../img/<?php echo $_SESSION['user']; ?>"/>
+					<div id="img_usr" style="background-image: url('../img/<?php echo $_SESSION['user']; ?>');"></div>
 				<?php } else { ?>
 					<img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
 				<?php } ?>
@@ -157,6 +157,6 @@ if (isset($_POST['task_conceptive'])) {
 </body>
 </html>
 <?php } else {
-	header("location: login.php");
+	header("location: ../login.php");
 }
 		?>

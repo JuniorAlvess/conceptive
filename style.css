@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+	font-family: Montserrat, sans-serif;
+	box-sizing: border-box;
+}
 
 body{
 	margin: 0;
@@ -35,10 +39,17 @@ nav img{
 	float: left;
 	
 }
-* {
-	font-family: Montserrat, sans-serif;
-	box-sizing: border-box;
+#img_usr {
+	border-radius: 100%;
+	height: 60px;
+	width: 60px;
+	float: left;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
+
+
 .input {
 	-webkit-appearance: none;
 }
@@ -150,7 +161,9 @@ nav img{
 	margin: 2% auto;
 	width: 90%;
 }
-
+.content h3{
+	margin:5px 40%;
+}
 
 #checklist{
 	float: left;

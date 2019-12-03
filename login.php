@@ -31,7 +31,7 @@ include('server.php');
 		<nav>
 			<ul>
 				<?php if (isset($_SESSION['user'])) { ?>
-					<img src="img/<?php echo $_SESSION['user']; ?>"/>
+					<div id="img_usr" style="background-image: url('img/<?php echo $_SESSION['user']; ?>');"></div>
 				<?php } else { ?>
 					<img src="http://rodcordeiro.github.io/shares/img/avatar.png"/>
 				<?php } ?>

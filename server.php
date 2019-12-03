@@ -21,7 +21,8 @@ $nome = "";
 $email = "";
 $errors = array();
 // Conectar ao banco de dados:
-$db= mysqli_connect('localhost', 'root', '', 'id8060145_conceptive');
+//A conexão ao banco de dados é feita no conexao.php
+include('conexao.php');
 //If Logoff is set
 if (isset($_GET['logoff'])) {
 	session_destroy();
