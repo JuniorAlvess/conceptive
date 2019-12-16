@@ -46,7 +46,7 @@ if (isset($_SESSION['user'])){
 		</nav>
 		<main>
 		    <div class="content">
-		    	<h3>FanaticSports</h3>
+		    	<a href="https://proboscidean-device.000webhostapp.com/Golden"><h3>FanaticSports</h3></a>
 				<section id="checklist">
 					<header>
 						<fieldset id="nova_nota">

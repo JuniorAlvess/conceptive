@@ -232,10 +232,13 @@ nav img{
 	margin: 2px 10px;
 	padding: 5px 2px;
 	text-align: justify-all;
+	font-family: sans-serif;
 }
-#notas article p{
-	font-family: all;
-
+#nota article p i {
+	font-size: 13;
+}
+#nota article p a::after{
+	content: '\f35d';
 }
 #nota .action{
 	float: right;
