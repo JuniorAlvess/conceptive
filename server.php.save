@@ -1,5 +1,5 @@
-<?php
-
+<?php 
+cho "<script src='js/Toast.in.js'></script>
 $timeout = 14400; // Tempo da sessao em segundos
 // Verifica se existe o parametro timeout, ou seja, se a sessão foi iniciada
 if(isset($_SESSION['timeout'])) {
@@ -145,7 +145,7 @@ if(isset($_POST['adicionar_conceptive'])){
 	$sql = "insert into cptv_anotacoes (data_criacao,user,titulo,anotacao,data_finalizacao,projeto) values 
 	(curdate(),'$user','$titulo','$nota',NULL,'conceptive');";
 	mysqli_query($db, $sql);
-	$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like'conceptive';");
+	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
@@ -165,7 +165,7 @@ if(isset($_POST['adicionar_devblog'])){
 	$sql = "insert into cptv_anotacoes (data_criacao,user,titulo,anotacao,data_finalizacao,projeto) values 
 	(curdate(),'$user','$titulo','$nota',NULL,'devblog');";
 	mysqli_query($db, $sql);
-	$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like 'devblog';");
+	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
 		
 
@@ -188,7 +188,7 @@ if(isset($_POST['adicionar_fanatic'])){
 	$sql = "insert into cptv_anotacoes (data_criacao,user,titulo,anotacao,data_finalizacao,projeto) values 
 	(curdate(),'$user','$titulo','$nota',NULL,'fanaticsports');";
 	mysqli_query($db, $sql);
-	$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like 'fanaticsports';");
+	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
@@ -199,7 +199,7 @@ if(isset($_POST['adicionar_fanatic'])){
 		$assunto = "Nova nota adicionada";
 		enviaEmail($de, $assunto, $mensagem, $para, $email_servidor);
 	}
-	header('location: index.php');	
+	header('location: index.php');
 }
 if (isset($_GET['delete'])) {
 	$id = $_GET['delete'];
@@ -216,7 +216,7 @@ if (isset($_POST['task_conceptive'])) {
 	$lvl = $_POST['prioridade'];
 	$sql = "insert into cptv_task(titulo,prioridade,projeto) values ('$titulo','$lvl','conceptive');";
 	mysqli_query($db,$sql);
-	$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like 'conceptive';");
+	$notify =mysqli_query($db,"select email from cptv_users;");
 	while ($row = mysqli_fetch_array($notify)) {
 		$email_servidor = "rodrigomendoncca@gmail.com";
 		$para = $row['email'];
@@ -236,7 +236,7 @@ if (isset($_POST['task_devblog'])) {
 	$lvl = $_POST['prioridade'];
 	$sql = "insert into cptv_task(titulo,prioridade,projeto) values ('$titulo','$lvl','devblog');";
 	if(mysqli_query($db,$sql)){
-		$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like 'devblog';");
+		$notify =mysqli_query($db,"select email from cptv_users;");
 		while ($row = mysqli_fetch_array($notify)) {
 			$email_servidor = "rodrigomendoncca@gmail.com";
 			$para = $row['email'];
@@ -252,12 +252,12 @@ if (isset($_POST['task_devblog'])) {
 }
 
 $tasks_fanatic = mysqli_query($db,"select * from cptv_task where status is null and projeto like 'fanaticsports' order by prioridade desc");
-if (isset($_POST['task_fanatic'])) {
+if (isset($_POST['task_devblog'])) {
 	$titulo = $_POST['titulo'];
 	$lvl = $_POST['prioridade'];
 	$sql = "insert into cptv_task(titulo,prioridade,projeto) values ('$titulo','$lvl','fanaticsports');";
 	if(mysqli_query($db,$sql)){
-		$notify =mysqli_query($db,"select distinct u.email from cptv_acessos a inner join cptv_users u on a.user=u.user where a.acessos like 'fanaticsports';");
+		$notify =mysqli_query($db,"select email from cptv_users;");
 		while ($row = mysqli_fetch_array($notify)) {
 			$email_servidor = "rodrigomendoncca@gmail.com";
 			$para = $row['email'];

@@ -2,16 +2,24 @@
  include('../server.php');
 if (isset($_SESSION['user'])){
 
-/* PARA CRIAR PASTA
-$pasta = "nova";
-mkdir('./'.$pasta.'/', 0777, true);
-$new_file = @fopen('./'.$pasta.'/font.css', "a+");
-$msg = "working";
-fwrite($new_file, $msg);
-fclose($new_file);
+if (isset($_POST['new_project'])) {
+/* PARA CRIAR PASTA */
+$pasta = $_POST['projeto'];
+mkdir('../projetos/'.$pasta.'/', 0777, true);
 
-include('../../server.php');
+// delete from cptv_projetos where projeto like 'cordeiro';delete from cptv_acessos where acessos like 'cordeiro';
+mysqli_query($db,"insert into cptv_projetos(projeto, status,data_criacao) values('$pasta','aberto',current_date());");
+mysqli_query($db,"insert into cptv_acessos(user,acessos) values('rodcordeiro','$pasta');");
 
+//INSERIR AQUI
+
+$consulta_acessos = mysqli_query($db,"select * from cptv_acessos where user like '".$_SESSION['user']."';");
+$_SESSION['acessos'] = array();
+while($row = mysqli_fetch_array($consulta_acessos)){
+	array_push($_SESSION['acessos'], $row['acessos']);
+}
+ksort($_SESSION['acessos']);
+/* 
 $notas_conceptive = mysqli_query($db, "SELECT * FROM cptv_anotacoes where data_finalizacao IS NULL and projeto like 'conceptive'");
 if(isset($_POST['adicionar_conceptive'])){
 	$user = $_SESSION['nome'];
@@ -53,6 +61,7 @@ if (isset($_POST['task_conceptive'])) {
 	header("location: index.php");
 }
 */
+}
 ?>
 <html>
 <head>
@@ -105,10 +114,14 @@ if (isset($_POST['task_conceptive'])) {
 
 					<h3>Atualizar nivel de usuário</h3>
 				<form action="index.php" method="post">
+					<?php 
+					$lista_usuarios = "select * from cptv_users;";
+					$qls = mysqli_query($db, $qls);
+					?>
 					<select name='usuario'>
-						<option>user1</option>
-						<option>user1</option>
-						<option>user1</option>
+						<?php while($row = mysqli_fetch_array($qls)){ ?>
+						<option value="<?php echo $row['user'] ?>"><?php echo $row['nome'] ?></option>
+					<?php } ?>
 					</select>
 					<select name="lvl">
 						<option>1</option>
@@ -134,9 +147,9 @@ if (isset($_POST['task_conceptive'])) {
 				</form>
 			<hr>
 			<h3>Gerenciar projetos</h3>
-			<form>
-				<input type="text" name="" placeholder="Novo do projeto">
-				<input type="submit" name="" value="Criar">
+			<form method="post" action="index.php"> 
+				<input type="text" name="projeto" placeholder="Novo do projeto">
+				<input type="submit" name="new_project" value="Criar">
 			</form>
 
 			<form>

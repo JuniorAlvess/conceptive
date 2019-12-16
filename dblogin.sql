@@ -53,9 +53,8 @@ insert into cptv_acessos(user,acessos) values('Junior','devblog');
 insert into cptv_acessos(user,acessos) values('Junior','conceptive');
 insert into cptv_acessos(user,acessos) values('ChapaaQuente','FanaticSports');
 insert into cptv_acessos(user,acessos) values('ChapaaQuente','conceptive');	
-drop table if exists cptv_acessos;
 
---release 1.4
+--release 1.4--
 drop table if exists cptv_projetos;
 create table cptv_projetos(
 id int(3) not null primary key auto_increment,

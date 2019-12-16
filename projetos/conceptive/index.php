@@ -27,6 +27,10 @@ if (isset($_SESSION['user'])){
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src="../../Toast.js"></script>
+<link rel="stylesheet" href="../../Toast.css">
+
+
 	</head>
 	<body>
 		<nav>
