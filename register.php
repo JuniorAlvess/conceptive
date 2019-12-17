@@ -23,9 +23,7 @@
 		<meta name="msapplication-TileImage" content="https://rodcordeiro.github.io/shares/favicons/favicon-rc/ms-icon-144x144.png">
 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript">
-			var nome= "Cordeiro";
-		</script>
+		
 
 	</head>
 	<body>
